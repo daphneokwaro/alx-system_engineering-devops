@@ -1,0 +1,2 @@
+#!/bin/bash
+WATER=water_value; STIR=stir_value; convert_base() { num=$1; from_base=$2; to_base=$3; dec=$(echo $num | tr '[:lower:]' '[:upper:]' | tr 'A-Z' '10' | bc); result=""; while [ $dec -gt 0 ]; do remainder=$(expr $dec % $to_base); result=$(echo $remainder$result | tr '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ' '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'); dec=$(expr $dec / $to_base); done; echo $result; }; sum=$(expr $(convert_base $WATER water 10) + $(convert_base $STIR stir 10)); convert_base $sum 10 bestchol;
